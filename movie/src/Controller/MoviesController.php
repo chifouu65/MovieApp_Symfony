@@ -3,28 +3,17 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MoviesController extends AbstractController
 {
     #[Route('/movies', name: 'app_movies')]
-    public function index(): Response
+    public function index(): JsonResponse
     {
-
-        $movies = [
-            "The Shawshank Redemption",
-            "The Godfather",
-            "The Dark Knight",
-            "The Godfather: Part II",
-            "The Lord of the Rings: The Return of the King",
-            "Pulp Fiction"
-        ];
-
-        return $this->render('index.html.twig', 
-        array(
-            'movies' => $movies
-        )
-    );
+        return $this->json([
+            'message' => 'Welcome to your new controller!',
+            'path' => 'src/Controller/MoviesController.php',
+        ]);
     }
 }
